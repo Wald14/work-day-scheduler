@@ -8,24 +8,16 @@ $(function main() {
 
   var calendar = [{
     hour: "hour-9",
-    task: "task for 9am"
+    task: ""
   },
   {
     hour: "hour-10",
-    task: "task for 10am"
+    task: ""
   },
   {
     hour: "hour-11",
-    task: "task for 11am"
+    task: ""
   }]
-
-  // function searchCalendar(hour, index) {
-  //   if(hour.hour === "hour-10")
-  //     return true;
-  // }
-
-  // var hourSpecificTask = calendar.findIndex(searchCalendar("hour-10", 0))
-  // console.log(hourSpecificTask)
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -45,14 +37,23 @@ $(function main() {
     console.log (`Index of the hour selected: ${indexOfHourClicked}`)
 
     // Return the "task" in the hour clicked
-    console.log (calendar[indexOfHourClicked].task)
+    console.log (`old task for ${hourBtnClicked} was: ${calendar[indexOfHourClicked].task}`)
 
     // Determine the text in the sibling textarea to the button that was clicked
     var taskTextArea = $.trim($(this).siblings("textarea").val());
-    console.log(taskTextArea)
+    console.log(`User entered task: ${taskTextArea}`)
 
+    // Set or replace task for that hour in the calendar array
+    calendar[indexOfHourClicked].task = taskTextArea;
+    console.log(`New task for ${hourBtnClicked} set to: ${calendar[indexOfHourClicked].task}`)
+
+    // Call save function to save changes to local storage
+    saveCalendar()
   });
 
+  function saveCalendar() {
+    localStorage.setItem("Task-Calendar", JSON.stringify(calendar));
+  }
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
