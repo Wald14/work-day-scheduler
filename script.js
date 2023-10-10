@@ -8,6 +8,7 @@ $(function main() {
 
   var calendar = loadCalendar();
 
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -50,16 +51,46 @@ $(function main() {
       return [{
         hour: "hour-9",
         task: ""
-    },
-    {
-      hour: "hour-10",
+      },
+      {
+        hour: "hour-10",
         task: ""
-    },
-    {
-      hour: "hour-11",
+      },
+      {
+        hour: "hour-11",
         task: ""
 
-    }];
+      },
+      {
+        hour: "hour-12",
+        task: ""
+
+      },
+      {
+        hour: "hour-13",
+        task: ""
+
+      },
+      {
+        hour: "hour-14",
+        task: ""
+
+      },
+      {
+        hour: "hour-15",
+        task: ""
+
+      },
+      {
+        hour: "hour-16",
+        task: ""
+
+      },
+      {
+        hour: "hour-17",
+        task: ""
+
+      }];
     } else {
       for (var i = 9; i < 9 + calendar.length; i++) {
         $("#hour-" + i).children("textarea").text(calendar[i - 9].task);
