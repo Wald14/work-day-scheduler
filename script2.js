@@ -9,7 +9,7 @@ $(function main() {
 
   var calendarHours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 
-  var calendar = loadCalendar();
+  var calendar = [];
 
 
   // COMPLETED: Add a listener for click events on the save button. This code should
@@ -104,12 +104,9 @@ $(function main() {
       $("<textarea>").addClass("col-8 col-md-10 description").attr("rows", 3),
       $("<button>").addClass("btn saveBtn col-2 col-md-1").attr("aria-label", "save").append($("<i></i>").addClass("fas fa-save").attr("aria-hidden", "true"))
     )
-
     $("#calendar-container").append(hourBlockDiv);
-  
+    calendar = loadCalendar();
   }
-
-
   
 
   function saveCalendar() {
