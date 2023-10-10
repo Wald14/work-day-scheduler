@@ -105,7 +105,6 @@ $(function main() {
       $("<button>").addClass("btn saveBtn col-2 col-md-1").attr("aria-label", "save").append($("<i></i>").addClass("fas fa-save").attr("aria-hidden", "true"))
     )
     $("#calendar-container").append(hourBlockDiv);
-    calendar = loadCalendar();
   }
   
 
@@ -118,6 +117,7 @@ $(function main() {
       generateTimeBlock(i + 9, calendarHours[i]);
     }
     pastPresentFuture()
+    calendar = loadCalendar();
   }
   generateCalendar();
 
