@@ -2,8 +2,8 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+
 $(function main() {
-  var saveButtonEl = $(".saveBtn");
   var now = dayjs();
   var hour = now.hour()
 
@@ -19,7 +19,9 @@ $(function main() {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  saveButtonEl.on("click", function () {
+  // var saveButtonEl = $(".saveBtn");
+  $("#calendar-container").on("click", ".saveBtn", function () {
+    console.log("save button clicked")
     // Determines the parent Div's Id (aka hour button clicked)
     var hourBtnClicked = $(this).parent().attr("id");
     // Determines where the matching object is in the calendar 
@@ -37,9 +39,6 @@ $(function main() {
   function saveCalendar() {
     localStorage.setItem("Task-Calendar", JSON.stringify(calendar));
   }
-
-
-
 
 
   // Completed: Add code to apply the past, present, or future class to each time
@@ -107,8 +106,15 @@ $(function main() {
     )
 
     $("#calendar-container").append(hourBlockDiv);
+  
   }
 
+
+  
+
+  function saveCalendar() {
+    localStorage.setItem("Task-Calendar", JSON.stringify(calendar));
+  }
 
   function generateCalendar() {
     for (i = 0; i < calendarHours.length; i++) {
@@ -117,6 +123,8 @@ $(function main() {
     pastPresentFuture()
   }
   generateCalendar();
+
+
 
 
 
