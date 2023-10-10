@@ -25,6 +25,7 @@ $(function main() {
     calendar = loadCalendar();
   }
 
+  
   // Generate a single time block
   function generateTimeBlock(hour, hour2) {
     var hourBlockDiv = $("<div></div>").attr("id", "hour-" + hour).addClass("row time-block past");
@@ -54,11 +55,11 @@ $(function main() {
     }
   }
 
+
   // Loads a calendar from localstorage
   // If no calendar exists in storage, it generates a template to work off of
   function loadCalendar() {
     calendar = JSON.parse(localStorage.getItem("Task-Calendar"));
-
     if (calendar === null) {
       return [
         { hour: "hour-9", task: "" },
@@ -85,14 +86,15 @@ $(function main() {
     console.log("save button clicked")
     // Determines the parent Div's Id (aka hour button clicked)
     var hourBtnClicked = $(this).parent().attr("id");
+
     // Determines where the matching object is in the calendar 
     var indexOfHourClicked = calendar.findIndex(function (calendar) {
       return calendar.hour === hourBtnClicked
     })
-    // Determine the text in the sibling textarea to the button that was clicked
-    var taskTextArea = $.trim($(this).siblings("textarea").val());
-    // Set or replace task for that hour in the calendar array
-    calendar[indexOfHourClicked].task = taskTextArea;
+    
+    // Determine the text in the sibling textarea to the button that was clicked and set that for the task value in that hour's object in the calendar array
+    calendar[indexOfHourClicked].task = $.trim($(this).siblings("textarea").val());
+
     // Call save function to save changes to local storage
     saveCalendar()
   });
